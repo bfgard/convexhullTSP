@@ -509,11 +509,20 @@ namespace TSP
         {
             string[] results = new string[3];
 
+            Stopwatch timer = new Stopwatch();
+
+            timer.Start();
             // TODO: Add your implementation for your advanced solver here.
 
-            results[COST] = "not implemented";    // load results into array here, replacing these dummy values
-            results[TIME] = "-1";
-            results[COUNT] = "-1";
+            City[] route = new ConvexHullTSP.run(Cities);
+
+            timer.Stop();
+
+            bssf = new TSPSolution(new ArrayList(route));
+
+            results[COST] = Convert.ToString(bssf.costOfRoute());    // load results into array here, replacing these dummy values
+            results[TIME] = timer.Elapsed.ToString();
+            results[COUNT] = "1";
 
             return results;
         } 
