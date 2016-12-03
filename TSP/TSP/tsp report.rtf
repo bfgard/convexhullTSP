@@ -1,0 +1,394 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}{\f1\fnil Consolas;}{\f2\fnil\fcharset0 Consolas;}{\f3\fnil\fcharset0 Courier New;}}
+{\colortbl ;\red0\green0\blue0;\red128\green128\blue128;\red0\green128\blue0;\red0\green0\blue255;\red43\green145\blue175;\red163\green21\blue21;}
+{\*\generator Riched20 10.0.14393}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9\par
+\cf1\f1\fs19         \cf2 ///\cf3  \cf2 <summary>\cf1\par
+        \cf2 ///\cf3  performs a Branch and Bound search of the state space of partial tours\cf1\par
+        \cf2 ///\cf3  stops when time limit expires and uses BSSF as solution\cf1\par
+        \cf2 ///\cf3  \cf2 </summary>\cf1\par
+        \cf2 ///\cf3  \cf2 <returns>\cf3 results array for GUI that contains three ints: cost of solution, time spent to find solution, number of solutions found during search (not counting initial BSSF estimate)\cf2 </returns>\cf1\par
+        \cf4 public\cf1  \cf4 string\cf1 [] bBSolveProblem()\par
+        \{\par
+            \cf4 string\cf1 [] results = \cf4 new\cf1  \cf4 string\cf1 [3];\par
+            \cf4 double\cf1  bestCost = \cf5 Convert\cf1 .ToDouble(greedySolveProblem()[0]);\par
+            \cf4 double\cf1  solutionCount = 0;\par
+            \cf4 double\cf1  maxQueueSize = 1;\par
+            \cf4 double\cf1  stateCount = 1;\par
+\par
+            \cf3 // Queue that takes proritizes branches with the worst best cost and then branches created first\cf1\par
+            \cf5 SortedSet\cf1 <\cf5 Branch\cf1 > branches = \cf4 new\cf1  \cf5 SortedSet\cf1 <\cf5 Branch\cf1 >(\par
+                \cf5 Comparer\cf1 <\cf5 Branch\cf1 >.Create(\par
+                    (one, two) =>\par
+                    \{\par
+                        \cf4 return\cf1   one.bestCost > one.bestCost ? -1 :\par
+                                one.bestCost < two.bestCost ? 1 :\par
+                                one.id < two.id ? -1 :\par
+                                one.id > two.id ? 1 : 0;\par
+                    \}));\par
+\par
+            branches.Add(\cf4 new\cf1  TSP.\cf5 Branch\cf1 (Cities));\par
+\par
+            \cf5 Stopwatch\cf1  timer = \cf4 new\cf1  \cf5 Stopwatch\cf1 ();\par
+\par
+            timer.Start();\par
+            \cf4 while\cf1  (branches.Count > 0 && timer.Elapsed.Seconds < time_limit) \{\par
+                \cf5 Branch\cf1  next = branches.Min;\par
+                \cf4 if\cf1  (next.isIrrelavent(bestCost))\par
+                \{\par
+                    branches.Remove(next);\par
+                    \cf4 continue\cf1 ;\par
+                \}\par
+\par
+                \cf4 if\cf1  (next.isFinished())\par
+                \{\par
+                    \cf4 if\cf1  (bestCost > next.bestCost)\par
+                    \{\par
+                        solutionCount++;\par
+                        bssf = \cf4 new\cf1  \cf5 TSPSolution\cf1 (\cf4 new\cf1  \cf5 ArrayList\cf1 (next.path));\par
+                        bestCost = next.bestCost;\par
+                    \}\par
+                    branches.Remove(next);\par
+                    \cf4 continue\cf1 ;\par
+                \}\par
+\par
+                \cf5 Branch\cf1  branch;\par
+                \cf4 if\cf1  ((branch = next.choose(Cities)) == \cf4 null\cf1 ) \{\par
+                    branches.Remove(next);\par
+                    \cf4 continue\cf1 ;\par
+                \}\par
+                branches.Add(branch);\par
+                stateCount++;\par
+                \cf4 if\cf1 (branches.Count > maxQueueSize)\par
+                \{\par
+                    maxQueueSize = branches.Count;\par
+                \}\par
+            \}\par
+            timer.Stop();\par
+\par
+            results[COST] = \cf5 Convert\cf1 .ToString(bestCost);\par
+            results[TIME] = timer.Elapsed.ToString();\par
+            results[COUNT] = \cf5 Convert\cf1 .ToString(solutionCount);\par
+            \cf5 Console\cf1 .WriteLine(\cf6 "StateCount "\cf1  + stateCount);\par
+            \cf5 Console\cf1 .WriteLine(\cf6 "MaxQueueSize "\cf1  + maxQueueSize);\par
+            \cf4 return\cf1  results;\par
+        \}\par
+\par
+        \cf3 /////////////////////////////////////////////////////////////////////////////////////////////\cf1\par
+        \cf3 // These additional solver methods will be implemented as part of the group project.\cf1\par
+        \cf3 ////////////////////////////////////////////////////////////////////////////////////////////\cf1\par
+\par
+        \cf2 ///\cf3  \cf2 <summary>\cf1\par
+        \cf2 ///\cf3  finds the greedy tour starting from each city and keeps the best (valid) one\cf1\par
+        \cf2 ///\cf3  \cf2 </summary>\cf1\par
+        \cf2 ///\cf3  \cf2 <returns>\cf3 results array for GUI that contains three ints: cost of solution, time spent to find solution, number of solutions found during search (not counting initial BSSF estimate)\cf2 </returns>\cf1\par
+        \cf4 public\cf1  \cf4 string\cf1 [] greedySolveProblem()\par
+        \{\par
+            \cf4 string\cf1 [] results = \cf4 new\cf1  \cf4 string\cf1 [3];\par
+            \cf5 Stopwatch\cf1  timer = \cf4 new\cf1  \cf5 Stopwatch\cf1 ();\par
+\par
+            timer.Start();\par
+            \cf4 foreach\cf1  ( \cf5 City\cf1  startCity \cf4 in\cf1  Cities)\par
+            \{\par
+                \cf4 int\cf1  visitedCount = 0;\par
+                \cf5 City\cf1 [] path = \cf4 new\cf1  \cf5 City\cf1 [Cities.Length];\par
+                path[visitedCount++] = startCity;\par
+\par
+                \cf4 while\cf1  (\cf4 true\cf1 )\par
+                \{\par
+                    \cf5 City\cf1  closestCity = \cf4 null\cf1 ;\par
+                    \cf4 double\cf1  closestCityCost = \cf4 double\cf1 .MaxValue;\par
+                    \cf4 foreach\cf1  (\cf5 City\cf1  next \cf4 in\cf1  Cities)\par
+                    \{\par
+                        \cf4 double\cf1  nextCityCost = path[visitedCount - 1].costToGetTo(next);\par
+                        \cf4 if\cf1  (closestCity == \cf4 null\cf1  || nextCityCost < closestCityCost)\par
+                        \{\par
+                            \cf4 if\cf1  (\cf5 Array\cf1 .Find<\cf5 City\cf1 >(path, city => city == \cf4 null\cf1  || city.Equals(next)) == \cf4 null\cf1 )\par
+                            \{\par
+                                closestCity = next;\par
+                                closestCityCost = nextCityCost;\par
+                            \}\par
+                        \}\par
+                    \}\par
+                    path[visitedCount++] = closestCity;\par
+\par
+                    \cf4 if\cf1  (visitedCount == path.Length || closestCity == \cf4 null\cf1 )\par
+                    \{\par
+                        \cf4 break\cf1 ;\par
+                    \}\par
+                \}\par
+                \cf4 if\cf1 (visitedCount == path.Length)\par
+                \{\par
+                    \cf4 double\cf1  finalCost = path[0].costToGetTo(path[path.Length - 1]);\par
+                    \cf4 if\cf1  (!\cf4 double\cf1 .IsInfinity(finalCost)) \{\par
+                        bssf = \cf4 new\cf1  \cf5 TSPSolution\cf1 (\cf4 new\cf1  \cf5 ArrayList\cf1 (path));\par
+                        \cf4 break\cf1 ;\par
+                    \}\par
+                \}\par
+            \}\par
+            timer.Stop();\par
+\par
+            results[COST] = costOfBssf().ToString();\par
+            results[TIME] = timer.Elapsed.ToString();\par
+            results[COUNT] = \cf6 "1"\cf1 ;\par
+\par
+            \cf4 return\cf1  results;\par
+        \}\par
+\par
+\par
+\par
+\cf4 using\cf1  System;\par
+\cf4 using\cf1  System.Collections.Generic;\par
+\cf4 using\cf1  System.Linq;\par
+\cf4 using\cf1  System.Text;\par
+\cf4 using\cf1  System.Threading.Tasks;\par
+\par
+\cf4 namespace\cf1  TSP\par
+\{\par
+    \cf4 class\cf1  \cf5 Branch\cf1\par
+    \{\par
+        \cf4 static\cf1  \cf4 private\cf1  \cf4 int\cf1  next_id = 0;\par
+        \cf4 public\cf1  \cf4 int\cf1  id;\par
+        \cf4 public\cf1  \cf4 double\cf1 [,] costs;\par
+        \cf4 public\cf1  \cf4 double\cf1  bestCost;\par
+\par
+        \cf4 public\cf1  \cf5 City\cf1 [] path;\par
+        \cf4 public\cf1  \cf4 int\cf1 [] path_index;\par
+        \cf4 public\cf1  \cf4 int\cf1  visitedCount;\par
+\par
+        \cf4 public\cf1  \cf4 override\cf1  \cf4 bool\cf1  Equals(\cf4 object\cf1  obj)\par
+        \{\par
+            \cf5 Branch\cf1  b = obj \cf4 as\cf1  \cf5 Branch\cf1 ;\par
+\par
+            \cf4 return\cf1  b.id == id;\par
+        \}\par
+\par
+        \cf4 public\cf1  \cf4 override\cf1  \cf4 int\cf1  GetHashCode()\par
+        \{\par
+            \cf4 return\cf1  id;\par
+        \}\par
+\par
+        \cf4 private\cf1  Branch(\cf5 Branch\cf1  branch, \cf5 City\cf1  city, \cf4 int\cf1  city_index)\par
+        \{\par
+            costs = \cf4 new\cf1  \cf4 double\cf1 [branch.costs.GetLength(0), branch.costs.GetLength(1)];\par
+            \cf5 Array\cf1 .Copy(branch.costs, costs, costs.Length);\par
+\par
+            path = \cf4 new\cf1  \cf5 City\cf1 [branch.path.Length];\par
+            \cf5 Array\cf1 .Copy(branch.path, path, path.Length);\par
+\par
+            path_index = \cf4 new\cf1  \cf4 int\cf1 [branch.path.Length];\par
+            \cf5 Array\cf1 .Copy(branch.path_index, path_index, path_index.Length);\par
+\par
+            visitedCount = branch.visitedCount;\par
+            path[visitedCount] = city;\par
+            path_index[visitedCount++] = city_index;\par
+\par
+            bestCost = branch.bestCost;\par
+            id = next_id++;\par
+        \}\par
+\par
+        \cf4 public\cf1  Branch(\cf5 City\cf1 [] cities)\par
+        \{\par
+            costs = \cf4 new\cf1  \cf4 double\cf1 [cities.Length, cities.Length];\par
+\par
+            \cf4 for\cf1 (\cf4 int\cf1  r = 0; r < cities.Length; r++)\par
+            \{\par
+                \cf4 for\cf1 (\cf4 int\cf1  c = 0; c < cities.Length; c++)\par
+                \{\par
+                    \cf4 if\cf1 (r == c)\par
+                    \{\par
+                        costs[r, c] = \cf4 double\cf1 .PositiveInfinity;\par
+                        \cf4 continue\cf1 ;\par
+                    \}\par
+                    costs[r, c] = cities[r].costToGetTo(cities[c]);\par
+                \}\par
+            \}\par
+            reduceCosts();\par
+\par
+            path = \cf4 new\cf1  \cf5 City\cf1 [cities.Length];\par
+            path[0] = cities[0];\par
+\par
+            path_index = \cf4 new\cf1  \cf4 int\cf1 [cities.Length];\par
+            path_index[0] = 0;\par
+\par
+            visitedCount = 1;\par
+\par
+            id = next_id++;\par
+        \}\par
+\par
+        \cf4 public\cf1  \cf5 Branch\cf1  choose(\cf5 City\cf1 [] cities)\par
+        \{\par
+            \cf4 int\cf1  prev = path_index[visitedCount - 1];\par
+            \cf4 double\cf1  minCost = \cf4 double\cf1 .PositiveInfinity;\par
+            \cf4 int\cf1  next = -1;\par
+            \cf4 for\cf1 (\cf4 int\cf1  i = 1; i < costs.GetLength(1); i++)\par
+            \{\par
+               \cf4 if\cf1 (minCost > costs[prev, i])\par
+                \{\par
+                    minCost = costs[prev, i];\par
+                    next = i;\par
+                \}\par
+            \}\par
+            \cf4 return\cf1  next != -1 ? choose(cities, prev, next) : \cf4 null\cf1 ;\par
+        \}\par
+\par
+        \cf4 public\cf1  \cf5 Branch\cf1  choose(\cf5 City\cf1 [] cities, \cf4 int\cf1  prev, \cf4 int\cf1  next)\par
+        \{\par
+            \cf5 Branch\cf1  branch = \cf4 new\cf1  \cf5 Branch\cf1 (\cf4 this\cf1 , cities[next], next);\par
+            branch.bestCost += costs[prev, next];\par
+\par
+            costs[prev, next] = \cf4 double\cf1 .PositiveInfinity;\par
+\par
+            \cf4 if\cf1  (visitedCount > 0)\par
+            \{\par
+                \cf4 for\cf1  (\cf4 int\cf1  i = 0; i < cities.Length; i++)\par
+                \{\par
+                    branch.costs[prev, i] = \cf4 double\cf1 .PositiveInfinity;\par
+                    branch.costs[i, next] = \cf4 double\cf1 .PositiveInfinity;\par
+                \}\par
+            \}\par
+            branch.reduceCosts();\par
+\par
+            \cf4 return\cf1  branch;\par
+        \}\par
+\par
+        \cf4 private\cf1  \cf4 void\cf1  reduceCosts()\par
+        \{\par
+            \cf3 // reduce rows\cf1\par
+            \cf4 for\cf1 (\cf4 int\cf1  r = 0; r < costs.GetLength(0); r++)\par
+            \{\par
+                \cf4 bool\cf1  hasZero = \cf4 false\cf1 ;\par
+                \cf4 bool\cf1  hasNumber = \cf4 false\cf1 ;\par
+                \cf4 double\cf1  min = \cf4 double\cf1 .PositiveInfinity;\par
+                \cf4 for\cf1 (\cf4 int\cf1  c = 0; c < costs.GetLength(1); c++)\par
+                \{\par
+                    \cf4 if\cf1  (costs[r, c] == 0)\par
+                    \{\par
+                        hasZero = \cf4 true\cf1 ;\par
+                        \cf4 break\cf1 ;\par
+                    \}\par
+                    \cf4 if\cf1 (!hasNumber && !\cf4 double\cf1 .IsInfinity(costs[r,c]))\par
+                    \{\par
+                        hasNumber = \cf4 true\cf1 ;\par
+                    \}\par
+                    \cf4 if\cf1  (min > costs[r, c])\par
+                    \{\par
+                        min = costs[r, c];\par
+                    \}\par
+                \}\par
+                \cf4 if\cf1  (hasZero || !hasNumber) \cf4 continue\cf1 ;\par
+\par
+                \cf4 for\cf1 (\cf4 int\cf1  c = 0; c < costs.GetLength(1); c++)\par
+                \{\par
+                    \cf4 if\cf1  (!\cf4 double\cf1 .IsInfinity(costs[r, c]))\par
+                    \{\par
+                        costs[r, c] -= min;\par
+                    \}\par
+                \}\par
+                bestCost += min;\par
+            \}\par
+\par
+            \cf3 // reduce columns\cf1\par
+            \cf4 for\cf1  (\cf4 int\cf1  c = 0; c < costs.GetLength(0); c++)\par
+            \{\par
+                \cf4 bool\cf1  hasZero = \cf4 false\cf1 ;\par
+\par
+                \cf4 bool\cf1  hasNumber = \cf4 false\cf1 ;\par
+                \cf4 double\cf1  min = \cf4 double\cf1 .PositiveInfinity;\par
+                \cf4 for\cf1  (\cf4 int\cf1  r = 0; r < costs.GetLength(1); r++)\par
+                \{\par
+                    \cf4 if\cf1  (costs[r, c] == 0)\par
+                    \{\par
+                        hasZero = \cf4 true\cf1 ;\par
+                        \cf4 break\cf1 ;\par
+                    \}\par
+                    \cf4 if\cf1  (!hasNumber && !\cf4 double\cf1 .IsInfinity(costs[r, c]))\par
+                    \{\par
+                        hasNumber = \cf4 true\cf1 ;\par
+                    \}\par
+                    \cf4 if\cf1  (min > costs[r, c])\par
+                    \{\par
+                        min = costs[r, c];\par
+                    \}\par
+                \}\par
+                \cf4 if\cf1  (hasZero || !hasNumber) \cf4 continue\cf1 ;\par
+\par
+                \cf4 for\cf1  (\cf4 int\cf1  r = 0; r < costs.GetLength(1); r++)\par
+                \{\par
+                    \cf4 if\cf1  (!\cf4 double\cf1 .IsInfinity(costs[r, c]))\par
+                    \{\par
+                        costs[r, c] -= min;\par
+                    \}\par
+                \}\par
+                bestCost += min;\par
+            \}\par
+        \}\par
+        \cf4 public\cf1  \cf4 bool\cf1  isIrrelavent(\cf4 double\cf1  bssf)\par
+        \{\par
+            \cf4 return\cf1  bestCost >= bssf;\par
+        \}\par
+        \cf4 public\cf1  \cf4 bool\cf1  isFinished()\par
+        \{\par
+            \cf4 if\cf1 (visitedCount == path.Length)\par
+            \{\par
+                bestCost += costs[path_index[path_index.Length - 1],0];\par
+                \cf4 return\cf1  \cf4 true\cf1 ;\par
+            \}\par
+            \cf4 else\cf1\par
+            \{\par
+                \cf4 return\cf1  \cf4 false\cf1 ;\par
+            \}\par
+        \}\par
+    \}\par
+\}\par
+\par
+\par
+\f2\lang1033 2.\par
+\fs24 Branch class\fs19\par
+\i Equals/HashCode \i0 Big-O Constant time\par
+\i\f1 Branch(\cf5 Branch\cf1  branch, \cf5 City\cf1  city, \cf4 int\cf1  city_index)\f2  \i0 Big-O N\super 2\nosupersub  Becuase it copies the cost array\par
+\i\f1 Branch(\cf5 City\cf1 [] cities)\f2  \i0 Big-O N\super 2\nosupersub  Because it has to construct the cost array\par
+\i Branch choose(City[] cities) \i0 Big-O N\super 2 \nosupersub Because is calls choose(City[],int,int)\par
+\i Branch choose(City[] cities, int prev, next)\i0  Big-O N\super 2 \nosupersub Because is calls reducedCosts()\par
+\i void reduceCosts()\i0  Big-O N\super 2\nosupersub  Becuase it has to go throught the costs array\par
+\fs24 Solver\par
+\i\fs19 initialize the problem \i0 Big-O N\super 2\nosupersub  Because is calls Branch(City[])\par
+\i the loop\i0  the loop may run N! times in the worst case where it finds new solutions in from the worst to the best in order, but this will never happen, espesially since the bssf starts from the greedy algorithm.\par
+\i remove irrelavent\i0  it takes Big-O log n to remove from the ordered set.\par
+\i create new branch\i0  it takes N\super 2 \nosupersub since it calles choose(City[])\par
+\fs24 Total\par
+\fs19 if the loop runs N! then it will add N! branches so it will take Big-O N!N\super 2\nosupersub  time\f1\lang9\par
+\f2\fs28\lang1033 Space\par
+\fs19 The main space consumer of the algorithm is the cost array.  The way a keyed causes the branch function to main go down first and rarely branch.  Becuase of the this it there are approximately N cost arrays at time.  The cost arrays are N\super 2\nosupersub  so the space complexity is Big-O N\super 3\par
+\nosupersub 3.\par
+My state class is called Branch.\par
+It keeps track of the the minimum cost for any given state and can calulate the next cost by reducing the cost array.  It also keeps track of what cities have been visited so far and where they are represented int the cost array.  The id is use to differentiate state that may have the same bestCost in the the queue.\par
+\cf4\f1\lang9 private\cf1  \cf4 int\cf1  next_id = 0\par
+\cf4 public\cf1  \cf4 int\cf1  id;\par
+\cf4 public\cf1  \cf4 double\cf1 [,] costs;\par
+\cf4 public\cf1  \cf4 double\cf1  bestCost;\par
+\cf4 public\cf1  \cf5 City\cf1 [] path;\par
+\cf4 public\cf1  \cf4 int\cf1 [] path_index;\par
+\cf4 public\cf1  \cf4 int\cf1  visitedCount;\par
+\f2\lang1033 4.\par
+I used c#'s built in OrderedSet for my Queue.  It takes log n time for an insert and log n for a remove.  For the key I put the highest cost branches first since I wanted to get to the bottom quickly.\par
+5.\par
+I implemented the greedy algorithm.\par
+6.\par
+\f3\fs16 #Cities | Seed | Running time | Cost | Max States | updates |# States| # pruned\par
+10\tab  | 131\tab  |  00:00.007\tab  | 3245*| 10\tab\tab | 3 \tab    |966     | 761\tab\par
+10 \tab  | 182  |  00:00.004\tab  | 2186*| 9\tab\tab | 3\tab    |694\tab      | 551\par
+20 \tab  | 16   |  01:00.000\tab  | 3944 | 26\tab\tab | 23      |3505304 | 3082828\par
+20 \tab  | 908\tab  |  01:00.000\tab  | 4066 | 23\tab\tab | 3\tab    |3414064 | 2989578\par
+30 \tab  | 938\tab  |  01:00.000\tab  | 4637 | 37\tab\tab | 38\tab    |1724586 | 1582749\par
+30 \tab  | 902\tab  |  01:00.000\tab  | 4656 | 39\tab\tab | 44\tab    |1791336 | 1654882\par
+40 \tab  | 428\tab  |  01:00.000\tab  | 6906 | 45\tab\tab | 0\tab    |857207  | 773360\par
+40\tab  | 363  |  01:00.000\tab  | 6966 | 44\tab\tab | 0\tab    |886972  | 811866\par
+50\tab  | 2    |  01:00.000  | 7801  | 65\tab\tab | 13      |528615  | 477091\par
+50\tab  | 289  |  01:00.000\tab  | 7453 | 56\tab\tab | 0\tab    |579145  | 539181\par
+*I think that the reason that my max queue size in the second row is less than the city count is becuase some of the parent states where pruned before moving on to child states.\par
+\f2\fs19 7.\par
+I think that some of them had few updated beacuse the greedy algorithm already had a good solution.  Once I get to solutions that I can't solve in less than a minute, the number of states produced in the problem gets smaller becuase it takes longer to produce a new state, (Big-O N\super 2\nosupersub )\par
+I would have been interesting to include the initial bssf in the table.\f3\fs16\par
+\cf0\f0\fs22\lang9\par
+}
+ 
