@@ -4,6 +4,7 @@
     <list default="true" id="289c147a-c3f8-428d-aacf-37ca958fba83" name="Default" comment="" />
     <ignored path="TSP.iws" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,17 +24,21 @@
       <file leaf-file-name="ConvexHullTSP.cs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../../WindowsFormsApplication1/ConvexHullTSP.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+            <state relative-caret-position="216">
+              <caret line="26" column="75" selection-start-line="26" selection-start-column="75" selection-end-line="27" selection-end-column="85" />
               <folding>
-                <marker date="1480974926131" expanded="true" signature="6:115" ph="..." />
-                <marker date="1480974926131" expanded="true" signature="130:1999" ph="{...}" />
-                <marker date="1480974926131" expanded="true" signature="156:1997" ph="{...}" />
-                <marker date="1480974926131" expanded="true" signature="267:343" ph="{...}" />
-                <marker date="1480974926131" expanded="true" signature="452:600" ph="{...}" />
-                <marker date="1480974926131" expanded="true" signature="727:980" ph="{...}" />
-                <marker date="1480974926131" expanded="true" signature="1136:1212" ph="{...}" />
-                <marker date="1480974926131" expanded="true" signature="1247:1991" ph="{...}" />
+                <marker date="1480977046019" expanded="true" signature="6:141" ph="..." />
+                <marker date="1480977046019" expanded="true" signature="156:3273" ph="{...}" />
+                <marker date="1480977046019" expanded="true" signature="182:3271" ph="{...}" />
+                <marker date="1480977046019" expanded="true" signature="293:369" ph="{...}" />
+                <marker date="1480977046019" expanded="true" signature="478:626" ph="{...}" />
+                <marker date="1480977046019" expanded="true" signature="636:740" ph="/* finds Visible points (Clint) ... */" />
+                <marker date="1480977046019" expanded="true" signature="826:1436" ph="{...}" />
+                <marker date="1480977046019" expanded="true" signature="1443:1604" ph="/* Returns true if the lines intersect, otherwise false. In addition, if the lines ... */" />
+                <marker date="1480977046019" expanded="true" signature="1706:2257" ph="{...}" />
+                <marker date="1480977046019" expanded="true" signature="2071:2198" ph="/* if (i_x != null) ... */" />
+                <marker date="1480977046019" expanded="true" signature="2410:2486" ph="{...}" />
+                <marker date="1480977046019" expanded="true" signature="2521:3265" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -133,6 +138,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="289c147a-c3f8-428d-aacf-37ca958fba83" name="Default" comment="" />
@@ -140,12 +148,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1480974245576</updated>
-      <workItem from="1480974247969" duration="689000" />
+      <workItem from="1480974247969" duration="2800000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="689000" />
+    <option name="totallyTimeSpent" value="2800000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -158,7 +166,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Change Signature" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2496" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -187,23 +195,37 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/v07/DecompilerCache/decompiler/C5EA14A2-BDD5-42D4-9796-00639BD6AD8B/f1/554f3260/Single.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../../WindowsFormsApplication1/ConvexHullTSP.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        <state relative-caret-position="216">
+          <caret line="26" column="75" selection-start-line="26" selection-start-column="75" selection-end-line="27" selection-end-column="85" />
           <folding>
-            <marker date="1480974926131" expanded="true" signature="6:115" ph="..." />
-            <marker date="1480974926131" expanded="true" signature="130:1999" ph="{...}" />
-            <marker date="1480974926131" expanded="true" signature="156:1997" ph="{...}" />
-            <marker date="1480974926131" expanded="true" signature="267:343" ph="{...}" />
-            <marker date="1480974926131" expanded="true" signature="452:600" ph="{...}" />
-            <marker date="1480974926131" expanded="true" signature="727:980" ph="{...}" />
-            <marker date="1480974926131" expanded="true" signature="1136:1212" ph="{...}" />
-            <marker date="1480974926131" expanded="true" signature="1247:1991" ph="{...}" />
+            <marker date="1480977046019" expanded="true" signature="6:141" ph="..." />
+            <marker date="1480977046019" expanded="true" signature="156:3273" ph="{...}" />
+            <marker date="1480977046019" expanded="true" signature="182:3271" ph="{...}" />
+            <marker date="1480977046019" expanded="true" signature="293:369" ph="{...}" />
+            <marker date="1480977046019" expanded="true" signature="478:626" ph="{...}" />
+            <marker date="1480977046019" expanded="true" signature="636:740" ph="/* finds Visible points (Clint) ... */" />
+            <marker date="1480977046019" expanded="true" signature="826:1436" ph="{...}" />
+            <marker date="1480977046019" expanded="true" signature="1443:1604" ph="/* Returns true if the lines intersect, otherwise false. In addition, if the lines ... */" />
+            <marker date="1480977046019" expanded="true" signature="1706:2257" ph="{...}" />
+            <marker date="1480977046019" expanded="true" signature="2071:2198" ph="/* if (i_x != null) ... */" />
+            <marker date="1480977046019" expanded="true" signature="2410:2486" ph="{...}" />
+            <marker date="1480977046019" expanded="true" signature="2521:3265" ph="{...}" />
           </folding>
         </state>
       </provider>
