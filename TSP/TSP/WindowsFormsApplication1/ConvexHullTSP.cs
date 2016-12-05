@@ -82,11 +82,11 @@ namespace TSP
 
             while(i_inner == -1)
             {
-                // find the closest visable point from citiesOuter[0]
-                int[] local_visable = FindVisableFromOuter(citiesOuter[i_outer], citiesInner, visable);
+                // find the closest visible point from citiesOuter[0]
+                int[] local_visible = FindVisibleFromOuter(citiesOuter[i_outer], citiesInner, visible);
                 
                 double min = double.MaxValue;
-                foreach(int lv in local_visable) {
+                foreach(int lv in local_visible) {
                     double next = citiesOuter[i_outer].costToGetTo(citiesInner[lv]);
                     if(next < min)
                     {
@@ -94,7 +94,7 @@ namespace TSP
                         i_inner = lv;
                     }
                 }
-                // if there are no visable points then it moves to the next point in citiesOuter
+                // if there are no visible points then it moves to the next point in citiesOuter
                 if (i_inner == -1)
                 {
                     combineHull[i_combine++] = citiesOuter[++i_outer];
@@ -108,7 +108,7 @@ namespace TSP
                 const int lookahead = 1;
                 // find the best connection locally with lookahead + 1 look aheads.
                 // the final '+ 1' local ahead always assumes connection between the hulls
-                CombineState initial = new CombineState(i_inner, i_outer, on_outer, 0);
+                CombineState initial = new CombineState(citiesOuter, citiesInner, visible,i_inner, i_outer, on_outer, 0);
 
                 double across = goAcross(initial, lookahead);
                 double around = goAround(initial, lookahead);
@@ -145,11 +145,11 @@ namespace TSP
         double goAcross(CombineState state, int depth)
         {
             //FIXME think about when the loop is almost done
-            //FIXME think about if it is not visable
+            //FIXME think about if it is not visible
             if (state.on_outer)
             {
-                int[] local_visable = FindVisableFromOuter(state.citiesOuter[state.i_outer], state.citiesInner, state.visable);
-                if (local_visable.Contains(state.i_inner))
+                int[] local_visible = FindVisibleFromOuter(state.citiesOuter[state.i_outer], state.citiesInner, state.visible);
+                if (local_visible.Contains(state.i_inner))
                 {
                     state.length += state.citiesOuter[state.i_outer].costToGetTo(state.citiesInner[state.i_inner]);
                     state.on_outer = false;
@@ -158,8 +158,8 @@ namespace TSP
             }
             else
             {
-                int[] local_visable = FindVisableFromOuter(state.citiesInner[state.i_inner], state.citiesOuter, state.visable);
-                if (local_visable.Contains(state.i_outer))
+                int[] local_visible = FindVisibleFromOuter(state.citiesInner[state.i_inner], state.citiesOuter, state.visible);
+                if (local_visible.Contains(state.i_outer))
                 {
                     state.length += state.citiesInner[state.i_inner].costToGetTo(state.citiesOuter[state.i_outer]);
                     state.on_outer = true;
@@ -170,17 +170,17 @@ namespace TSP
                 return state.length;
             } else if (depth < 1)
             {
-                return goAcross(new CombineState(state), depth - 1),
+                return goAcross(new CombineState(state), depth - 1);
             }
             else
             {
                 return Math.Min(
                     goAcross(new CombineState(state), depth - 1),
-                    goArround(new CombineState(state), depth - 1));
+                    goAround(new CombineState(state), depth - 1));
             }
         }
 
-        double goArround(CombineState state, int depth)
+        double goAround(CombineState state, int depth)
         {
             //FIXME think about when the loop is almost done
             if (state.on_outer)
@@ -200,7 +200,7 @@ namespace TSP
             {
                 return Math.Min(
                     goAcross(new CombineState(state), depth - 1),
-                    goArround(new CombineState(state), depth - 1));
+                    goAround(new CombineState(state), depth - 1));
             }
         }
 
@@ -209,16 +209,16 @@ namespace TSP
             return (i + 1) % n;
         }
 
-        int[] FindVisableFromOuter(City cityOuter, City[] citiesInner, Tuple<City, City>[] visable)
+        int[] FindVisibleFromOuter(City cityOuter, City[] citiesInner, Tuple<City, City>[] visible)
         {
             List<int> result = new List<int>();
-            for(int i = 0; i < visable.Length; i++)
+            for(int i = 0; i < visible.Length; i++)
             {
-                if(visable[i].Item1 == cityOuter)
+                if(visible[i].Item1 == cityOuter)
                 {
                     for(int j = 0; j < citiesInner.Length; j++)
                     {
-                        if(visable[i].Item2 == citiesInner[j])
+                        if(visible[i].Item2 == citiesInner[j])
                         {
                             result.Add(j);
                         }
@@ -228,16 +228,16 @@ namespace TSP
             return result.ToArray();
         }
 
-        int[] FindVisableFromInner(City cityInner, City[] citiesOuter, Tuple<City, City>[] visable)
+        int[] FindVisibleFromInner(City cityInner, City[] citiesOuter, Tuple<City, City>[] visible)
         {
             List<int> result = new List<int>();
-            for (int i = 0; i < visable.Length; i++)
+            for (int i = 0; i < visible.Length; i++)
             {
-                if (visable[i].Item2 == cityInner)
+                if (visible[i].Item2 == cityInner)
                 {
                     for (int j = 0; j < citiesOuter.Length; j++)
                     {
-                        if (visable[i].Item1 == citiesOuter[j])
+                        if (visible[i].Item1 == citiesOuter[j])
                         {
                             result.Add(j);
                         }

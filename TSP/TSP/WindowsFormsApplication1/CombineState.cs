@@ -12,17 +12,17 @@ namespace TSP
         {
             this.citiesOuter = state.citiesOuter;
             this.citiesInner = state.citiesInner;
-            this.visable = state.visable;
+            this.visible = state.visible;
             this.i_inner = state.i_inner;
             this.i_outer = state.i_outer;
             this.on_outer = state.on_outer;
             this.length = state.length;
         }
-        public CombineState(City[] citiesOuter, City[] citiesInner, Tuple<City, City>[] visable, int i_inner, int i_outer, bool on_outer, double length)
+        public CombineState(City[] citiesOuter, City[] citiesInner, Tuple<City, City>[] visible, int i_inner, int i_outer, bool on_outer, double length)
         {
             this.citiesOuter = citiesOuter;
             this.citiesInner = citiesInner;
-            this.visable = visable;
+            this.visible = visible;
             this.i_inner = i_inner;
             this.i_outer = i_outer;
             this.on_outer = on_outer;
@@ -31,7 +31,7 @@ namespace TSP
 
         public City[] citiesOuter;
         public City[] citiesInner;
-        public Tuple<City, City>[] visable;
+        public Tuple<City, City>[] visible;
         public int i_inner;
         public int i_outer;
         public bool on_outer;
