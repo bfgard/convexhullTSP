@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,15 +23,53 @@ namespace TSP
             return citiesA.Where(x => !citiesB.Contains(x)).ToArray();
         }
 
-        // finds Visable points (Clint)
-        Tuple<City, City>[] FindVisablePoints(City[] citiesOuter, City[] citiesInner)
+        // finds Visible points (Clint)
+	    // Returns an array of tuples from the outer hull to the inner hull
+        Tuple<City, City>[] FindVisiblePoints(City[] citiesOuter, City[] citiesInner)
         {
-            // FIXME implemnt 
-            return null;
+	        var visible = new List<Tuple<City, City>>();
+	        foreach (var city in citiesOuter)
+	        {
+		        foreach (var city1 in citiesInner)
+		        {
+			        for (var i = 0; i < citiesInner.Length; i++)
+			        {
+				        var begin = i > 0 ? i - 1 : citiesInner.Length - 1;
+				        var intersects = test_line_intersection(city, city1, citiesInner[begin], citiesInner[i]);
+				        if (!intersects)
+				        {
+					        visible.Add(new Tuple<City, City>(city, city1));
+				        }
+			        }
+		        }
+	        }
+	        return visible.ToArray();
         }
 
-        // returns minimum combination of two hulls (Roy)
-        City[] CombineHulls(City[] citiesOuter, City[] citiesInner, Tuple<City, City>[] visable)
+	    // Returns true if the lines intersect, otherwise false. In addition, if the lines
+		// intersect the intersection point may be stored in the floats i_x and i_y.
+	    private static bool test_line_intersection(City city0, City city1,
+		    City city2, City city3)
+	    {
+		    var s1_x = city1.X - city0.X;
+		    var s1_y = city1.Y - city0.Y;
+
+		    var s2_x = city3.X - city2.X;
+		    var s2_y = city3.Y - city2.Y;
+
+		    var s = (-s1_y * (city0.X - city2.X) + s1_x * (city0.Y - city2.Y)) / (-s2_x * s1_y + s1_x * s2_y);
+		    var t = ( s2_x * (city0.Y - city2.Y) - s2_y * (city0.X - city2.X)) / (-s2_x * s1_y + s1_x * s2_y);
+
+//			    if (i_x != null)
+//				    i_x = city0.X + (t * s1_x);
+//			    if (i_y != null)
+//				    i_y = city0.Y + (t * s1_y);
+
+		    return s >= 0 && s <= 1 && t >= 0 && t <= 1;
+	    }
+
+	    // returns minimum combination of two hulls (Roy)
+        City[] CombineHulls(City[] citiesOuter, City[] citiesInner, Tuple<City, City>[] visible)
         {
             City[] combineHull = new City[citiesOuter.Length + citiesInner.Length];
 
@@ -226,7 +265,7 @@ namespace TSP
                     CombineHulls(
                         hulls[0],
                         hulls[i],
-                        FindVisablePoints(hulls[0], hulls[i])
+                        FindVisiblePoints(hulls[0], hulls[i])
                         );
             }
 
