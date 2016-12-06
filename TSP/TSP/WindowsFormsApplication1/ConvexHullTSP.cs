@@ -37,7 +37,7 @@ namespace TSP
             // FIXME implement something better than n^2
             return citiesA.Where(x => !citiesB.Contains(x)).ToArray();
         }
-        
+
         // finds Visible points (Clint)
         // Returns an array of tuples from the outer hull to the inner hull
         Tuple< List<int>[], List<int>[] > FindVisiblePoints(City[] citiesOuter, City[] citiesInner)
@@ -61,14 +61,21 @@ namespace TSP
                 for (int inner = 0; inner < citiesInner.Length; inner++)
                 {
                     City city1 = citiesInner[inner];
-                    int intersects = 0;
+                    bool intersects = false;
                     for (var i = 0; i < citiesInner.Length; i++)
                     {
                         var begin = i > 0 ? i - 1 : citiesInner.Length - 1;
-                        intersects += test_line_intersection(city, city1, citiesInner[begin], citiesInner[i]) ? 1 : 0;
-
+                        if(begin == inner || i == inner)
+                        {
+                            continue;
+                        }
+                        if(test_line_intersection(city, city1, citiesInner[begin], citiesInner[i]))
+                        {
+                            intersects = true;
+                            break;
+                        }
                     }
-                    if (intersects <= 2) // If we never intersected (more than the connected pieces)
+                    if (!intersects) // If we never intersected (more than the connected pieces)
                     {
                         outToIn[outer].Add(inner);
                         inToOut[inner].Add(outer);
