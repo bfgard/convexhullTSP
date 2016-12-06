@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using _2_convex_hull;
@@ -28,7 +30,7 @@ namespace TSP
             {
                 cityHull[i] = cities[hull[i]];
             }
-            return cityHull;
+            return OrderClockwise(cityHull);
         }
 
         // set subtractions citiesA - citiesB
@@ -61,11 +63,11 @@ namespace TSP
                 for (int inner = 0; inner < citiesInner.Length; inner++)
                 {
                     City city1 = citiesInner[inner];
-                    bool intersects = false;
+                    var intersects = false;
                     for (var i = 0; i < citiesInner.Length; i++)
                     {
                         var begin = i > 0 ? i - 1 : citiesInner.Length - 1;
-                        if(begin == inner || i == inner)
+	                    if(begin == inner || i == inner)
                         {
                             continue;
                         }
@@ -75,8 +77,9 @@ namespace TSP
                             break;
                         }
                     }
-                    if (!intersects) // If we never intersected (more than the connected pieces)
+                    if (!intersects) // If we never intersected.
                     {
+//	                    Debug.WriteLine($"(({citiesOuter[outer].X},{citiesOuter[outer].Y}), ({citiesInner[inner].X},{citiesInner[inner].Y})),");
                         outToIn[outer].Add(inner);
                         inToOut[inner].Add(outer);
                     }
@@ -85,10 +88,27 @@ namespace TSP
             return new Tuple<List<int>[], List<int>[]>(outToIn, inToOut);
         }
 
-        // Returns true if the lines intersect, otherwise false. In addition, if the lines
+	    private City[] OrderClockwise(City[] pointList)
+	    {
+		    // Find center
+		    var cx = 0.0;
+		    var cy = 0.0;
+		    foreach (var City in pointList)
+		    {
+			    cx += City.X;
+			    cy += City.Y;
+		    }
+		    cx /= pointList.Length;
+		    cy /= pointList.Length;
+		    // Sort by angle to center
+		    var points = pointList.OrderBy(x => Math.Atan2(cy - x.Y, cx - x.X)).ToArray();
+		    return points;
+	    }
+
+
+	    // Returns true if the lines intersect, otherwise false. In addition, if the lines
         // intersect the intersection point may be stored in the floats i_x and i_y.
-        private static bool test_line_intersection(City city0, City city1,
-		    City city2, City city3)
+        private static bool test_line_intersection(City city0, City city1, City city2, City city3)
 	    {
 		    var s1_x = city1.X - city0.X;
 		    var s1_y = city1.Y - city0.Y;

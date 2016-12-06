@@ -24,25 +24,64 @@
       <file leaf-file-name="ConvexHullTSP.cs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../../WindowsFormsApplication1/ConvexHullTSP.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
-              <caret line="92" column="51" selection-start-line="92" selection-start-column="51" selection-end-line="92" selection-end-column="51" />
+            <state relative-caret-position="405">
+              <caret line="82" column="50" selection-start-line="82" selection-start-column="50" selection-end-line="82" selection-end-column="50" />
               <folding>
-                <marker date="1480996855050" expanded="true" signature="6:141" ph="..." />
-                <marker date="1480996855050" expanded="true" signature="6:163" ph="..." />
-                <marker date="1480996855050" expanded="true" signature="178:9459" ph="{...}" />
-                <marker date="1480996855050" expanded="true" signature="315:1004" ph="{...}" />
-                <marker date="1480996855050" expanded="true" signature="1113:1261" ph="{...}" />
-                <marker date="1480996855050" expanded="true" signature="1271:1375" ph="/* finds Visible points (Clint) ... */" />
-                <marker date="1480996855050" expanded="true" signature="1461:2168" ph="{...}" />
-                <marker date="1480996855050" expanded="true" signature="2175:2336" ph="/* Returns true if the lines intersect, otherwise false. In addition, if the lines ... */" />
-                <marker date="1480996855050" expanded="true" signature="2438:2989" ph="{...}" />
-                <marker date="1480996855050" expanded="true" signature="2803:2930" ph="/* if (i_x != null) ... */" />
-                <marker date="1480996855050" expanded="true" signature="3142:7372" ph="{...}" />
-                <marker date="1480996855050" expanded="true" signature="7487:8024" ph="{...}" />
-                <marker date="1480996855050" expanded="true" signature="8125:8666" ph="{...}" />
-                <marker date="1480996855050" expanded="true" signature="8681:9457" ph="{...}" />
-                <marker date="1480996855050" expanded="true" signature="8681:9459" ph="{...}" />
-                <marker date="1480996855050" expanded="true" signature="8707:9451" ph="{...}" />
+                <marker date="1481008203490" expanded="true" signature="6:228" ph="..." />
+                <marker date="1481008203490" expanded="true" signature="243:9647" ph="{...}" />
+                <marker date="1481008203490" expanded="true" signature="269:9645" ph="{...}" />
+                <marker date="1481008203490" expanded="true" signature="380:1085" ph="{...}" />
+                <marker date="1481008203490" expanded="true" signature="1194:1342" ph="{...}" />
+                <marker date="1481008203490" expanded="true" signature="1352:1459" ph="/* finds Visible points (Clint) ... */" />
+                <marker date="1481008203490" expanded="true" signature="1559:3355" ph="{...}" />
+                <marker date="1481008203490" expanded="true" signature="3409:3779" ph="{...}" />
+                <marker date="1481008203490" expanded="true" signature="3787:3954" ph="/* Returns true if the lines intersect, otherwise false. In addition, if the lines ... */" />
+                <marker date="1481008203490" expanded="true" signature="4053:4475" ph="{...}" />
+                <marker date="1481008203490" expanded="true" signature="4640:8854" ph="{...}" />
+                <marker date="1481008203490" expanded="true" signature="8895:9639" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConvexHullSolver.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../WindowsFormsApplication1/ConvexHullSolver.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="578">
+              <caret line="67" column="9" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
+              <folding>
+                <marker date="1480995509690" expanded="true" signature="6:107" ph="..." />
+                <marker date="1480995509690" expanded="true" signature="133:19383" ph="{...}" />
+                <marker date="1480995509690" expanded="true" signature="162:16584" ph="{...}" />
+                <marker date="1480995509690" expanded="true" signature="406:500" ph="{...}" />
+                <marker date="1480995509690" expanded="true" signature="542:1067" ph="{...}" />
+                <marker date="1480995509690" expanded="true" signature="1112:1313" ph="{...}" />
+                <marker date="1480995509690" expanded="true" signature="1380:2488" ph="{...}" />
+                <marker date="1480995509690" expanded="true" signature="1403:1539" ph="/* Solve ... */" />
+                <marker date="1480995509690" expanded="true" signature="2561:3730" ph="{...}" />
+                <marker date="1480995509690" expanded="true" signature="2584:2731" ph="/* Divide and Conquer ... */" />
+                <marker date="1480995509690" expanded="true" signature="3788:5446" ph="{...}" />
+                <marker date="1480995509690" expanded="true" signature="3811:3915" ph="/* Recombine Hull ... */" />
+                <marker date="1480995509690" expanded="true" signature="5505:5815" ph="{...}" />
+                <marker date="1480995509690" expanded="true" signature="5528:5637" ph="/* Calculates slope ... */" />
+                <marker date="1480995509690" expanded="true" signature="5892:7792" ph="{...}" />
+                <marker date="1480995509690" expanded="true" signature="5915:6021" ph="/* Create a new hull ... */" />
+                <marker date="1480995509690" expanded="true" signature="7847:12997" ph="{...}" />
+                <marker date="1480995509690" expanded="true" signature="7870:7985" ph="/* Find upper tangency points ... */" />
+                <marker date="1480995509690" expanded="true" signature="13052:16577" ph="{...}" />
+                <marker date="1480995509690" expanded="true" signature="13075:13241" ph="/* Find lower tangency points ... */" />
+                <marker date="1480995509690" expanded="true" signature="16600:19381" ph="{...}" />
+                <marker date="1480995509690" expanded="true" signature="16953:17939" ph="{...}" />
+                <marker date="1480995509690" expanded="true" signature="16976:17081" ph="/* Hull constructor ... */" />
+                <marker date="1480995509690" expanded="true" signature="18017:18071" ph="{...}" />
+                <marker date="1480995509690" expanded="true" signature="18159:18206" ph="{...}" />
+                <marker date="1480995509690" expanded="true" signature="18289:18338" ph="{...}" />
+                <marker date="1480995509690" expanded="true" signature="18423:18473" ph="{...}" />
+                <marker date="1480995509690" expanded="true" signature="18569:18625" ph="{...}" />
+                <marker date="1480995509690" expanded="true" signature="18721:18847" ph="{...}" />
+                <marker date="1480995509690" expanded="true" signature="18952:19078" ph="{...}" />
+                <marker date="1480995509690" expanded="true" signature="19164:19217" ph="{...}" />
+                <marker date="1480995509690" expanded="true" signature="19320:19374" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -55,7 +94,6 @@
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <marker date="1480973710125" expanded="true" signature="6:75" ph="..." />
-                <marker date="1480973710125" expanded="true" signature="90:506" ph="{...}" />
                 <marker date="1480973710125" expanded="true" signature="117:504" ph="{...}" />
                 <marker date="1480973710125" expanded="true" signature="132:222" ph="/// The main entry point for the application. ... " />
                 <marker date="1480973710125" expanded="true" signature="269:456" ph="{...}" />
@@ -177,11 +215,12 @@
       <updated>1480974245576</updated>
       <workItem from="1480974247969" duration="2800000" />
       <workItem from="1480994824368" duration="2178000" />
+      <workItem from="1481004570735" duration="3626000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4978000" />
+    <option name="totallyTimeSpent" value="8604000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -205,17 +244,17 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="NuGet" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Change Signature" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14293334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14453334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39935064" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2564935" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -224,15 +263,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/../../WindowsFormsApplication1/ConvexHullTSP.cs</url>
-          <line>90</line>
-          <properties startOffset="3165" endOffset="3236" documentPath="$PROJECT_DIR$/../../WindowsFormsApplication1/ConvexHullTSP.cs" />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -242,22 +273,52 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1480996855050" expanded="true" signature="6:141" ph="..." />
-            <marker date="1480996855050" expanded="true" signature="6:163" ph="..." />
-            <marker date="1480996855050" expanded="true" signature="178:9459" ph="{...}" />
-            <marker date="1480996855050" expanded="true" signature="315:1004" ph="{...}" />
-            <marker date="1480996855050" expanded="true" signature="1113:1261" ph="{...}" />
-            <marker date="1480996855050" expanded="true" signature="1271:1375" ph="/* finds Visible points (Clint) ... */" />
-            <marker date="1480996855050" expanded="true" signature="1461:2168" ph="{...}" />
-            <marker date="1480996855050" expanded="true" signature="2175:2336" ph="/* Returns true if the lines intersect, otherwise false. In addition, if the lines ... */" />
-            <marker date="1480996855050" expanded="true" signature="2438:2989" ph="{...}" />
-            <marker date="1480996855050" expanded="true" signature="2803:2930" ph="/* if (i_x != null) ... */" />
-            <marker date="1480996855050" expanded="true" signature="3142:7372" ph="{...}" />
-            <marker date="1480996855050" expanded="true" signature="7487:8024" ph="{...}" />
-            <marker date="1480996855050" expanded="true" signature="8125:8666" ph="{...}" />
-            <marker date="1480996855050" expanded="true" signature="8681:9457" ph="{...}" />
-            <marker date="1480996855050" expanded="true" signature="8681:9459" ph="{...}" />
-            <marker date="1480996855050" expanded="true" signature="8707:9451" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="6:228" ph="..." />
+            <marker date="1481008203490" expanded="true" signature="243:9647" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="269:9645" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="380:1085" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="1194:1342" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="1352:1459" ph="/* finds Visible points (Clint) ... */" />
+            <marker date="1481008203490" expanded="true" signature="1559:3355" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="3409:3779" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="3787:3954" ph="/* Returns true if the lines intersect, otherwise false. In addition, if the lines ... */" />
+            <marker date="1481008203490" expanded="true" signature="4053:4475" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="4640:8854" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="8895:9639" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../WindowsFormsApplication1/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1480973710125" expanded="true" signature="6:75" ph="..." />
+            <marker date="1480973710125" expanded="true" signature="117:504" ph="{...}" />
+            <marker date="1480973710125" expanded="true" signature="132:222" ph="/// The main entry point for the application. ... " />
+            <marker date="1480973710125" expanded="true" signature="269:456" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../WindowsFormsApplication1/ConvexHullTSP.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1481008203490" expanded="true" signature="6:228" ph="..." />
+            <marker date="1481008203490" expanded="true" signature="243:9647" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="269:9645" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="380:1085" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="1194:1342" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="1352:1459" ph="/* finds Visible points (Clint) ... */" />
+            <marker date="1481008203490" expanded="true" signature="1559:3355" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="3409:3779" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="3787:3954" ph="/* Returns true if the lines intersect, otherwise false. In addition, if the lines ... */" />
+            <marker date="1481008203490" expanded="true" signature="4053:4475" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="4640:8854" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="8895:9639" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -273,16 +334,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="442">
           <caret line="26" column="9" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
-          <folding>
-            <marker date="1480995453734" expanded="true" signature="6:110" ph="..." />
-            <marker date="1480995453734" expanded="true" signature="136:2220" ph="{...}" />
-            <marker date="1480995453734" expanded="true" signature="169:2218" ph="{...}" />
-            <marker date="1480995453734" expanded="true" signature="374:468" ph="{...}" />
-            <marker date="1480995453734" expanded="true" signature="499:662" ph="{...}" />
-            <marker date="1480995453734" expanded="true" signature="707:908" ph="{...}" />
-            <marker date="1480995453734" expanded="true" signature="997:1938" ph="{...}" />
-            <marker date="1480995453734" expanded="true" signature="1972:2212" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -290,7 +341,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -298,7 +348,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -306,7 +355,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-845">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -314,7 +362,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="4435" column="9" selection-start-line="4435" selection-start-column="8" selection-end-line="4435" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -322,7 +369,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -332,7 +378,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <marker date="1480973710125" expanded="true" signature="6:75" ph="..." />
-            <marker date="1480973710125" expanded="true" signature="90:506" ph="{...}" />
             <marker date="1480973710125" expanded="true" signature="117:504" ph="{...}" />
             <marker date="1480973710125" expanded="true" signature="132:222" ph="/// The main entry point for the application. ... " />
             <marker date="1480973710125" expanded="true" signature="269:456" ph="{...}" />
@@ -340,27 +385,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../../WindowsFormsApplication1/ConvexHullSolver.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="67" column="9" selection-start-line="67" selection-start-column="9" selection-end-line="67" selection-end-column="9" />
+          <folding>
+            <marker date="1480995509690" expanded="true" signature="6:107" ph="..." />
+            <marker date="1480995509690" expanded="true" signature="133:19383" ph="{...}" />
+            <marker date="1480995509690" expanded="true" signature="162:16584" ph="{...}" />
+            <marker date="1480995509690" expanded="true" signature="406:500" ph="{...}" />
+            <marker date="1480995509690" expanded="true" signature="542:1067" ph="{...}" />
+            <marker date="1480995509690" expanded="true" signature="1112:1313" ph="{...}" />
+            <marker date="1480995509690" expanded="true" signature="1380:2488" ph="{...}" />
+            <marker date="1480995509690" expanded="true" signature="1403:1539" ph="/* Solve ... */" />
+            <marker date="1480995509690" expanded="true" signature="2561:3730" ph="{...}" />
+            <marker date="1480995509690" expanded="true" signature="2584:2731" ph="/* Divide and Conquer ... */" />
+            <marker date="1480995509690" expanded="true" signature="3788:5446" ph="{...}" />
+            <marker date="1480995509690" expanded="true" signature="3811:3915" ph="/* Recombine Hull ... */" />
+            <marker date="1480995509690" expanded="true" signature="5505:5815" ph="{...}" />
+            <marker date="1480995509690" expanded="true" signature="5528:5637" ph="/* Calculates slope ... */" />
+            <marker date="1480995509690" expanded="true" signature="5892:7792" ph="{...}" />
+            <marker date="1480995509690" expanded="true" signature="5915:6021" ph="/* Create a new hull ... */" />
+            <marker date="1480995509690" expanded="true" signature="7847:12997" ph="{...}" />
+            <marker date="1480995509690" expanded="true" signature="7870:7985" ph="/* Find upper tangency points ... */" />
+            <marker date="1480995509690" expanded="true" signature="13052:16577" ph="{...}" />
+            <marker date="1480995509690" expanded="true" signature="13075:13241" ph="/* Find lower tangency points ... */" />
+            <marker date="1480995509690" expanded="true" signature="16600:19381" ph="{...}" />
+            <marker date="1480995509690" expanded="true" signature="16953:17939" ph="{...}" />
+            <marker date="1480995509690" expanded="true" signature="16976:17081" ph="/* Hull constructor ... */" />
+            <marker date="1480995509690" expanded="true" signature="18017:18071" ph="{...}" />
+            <marker date="1480995509690" expanded="true" signature="18159:18206" ph="{...}" />
+            <marker date="1480995509690" expanded="true" signature="18289:18338" ph="{...}" />
+            <marker date="1480995509690" expanded="true" signature="18423:18473" ph="{...}" />
+            <marker date="1480995509690" expanded="true" signature="18569:18625" ph="{...}" />
+            <marker date="1480995509690" expanded="true" signature="18721:18847" ph="{...}" />
+            <marker date="1480995509690" expanded="true" signature="18952:19078" ph="{...}" />
+            <marker date="1480995509690" expanded="true" signature="19164:19217" ph="{...}" />
+            <marker date="1480995509690" expanded="true" signature="19320:19374" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/v07/DecompilerCache/decompiler/C5EA14A2-BDD5-42D4-9796-00639BD6AD8B/41/b385835a/Math.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="60" column="32" selection-start-line="60" selection-start-column="32" selection-end-line="60" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../../WindowsFormsApplication1/ConvexHullTSP.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="92" column="51" selection-start-line="92" selection-start-column="51" selection-end-line="92" selection-end-column="51" />
+        <state relative-caret-position="405">
+          <caret line="82" column="50" selection-start-line="82" selection-start-column="50" selection-end-line="82" selection-end-column="50" />
           <folding>
-            <marker date="1480996855050" expanded="true" signature="6:141" ph="..." />
-            <marker date="1480996855050" expanded="true" signature="6:163" ph="..." />
-            <marker date="1480996855050" expanded="true" signature="178:9459" ph="{...}" />
-            <marker date="1480996855050" expanded="true" signature="315:1004" ph="{...}" />
-            <marker date="1480996855050" expanded="true" signature="1113:1261" ph="{...}" />
-            <marker date="1480996855050" expanded="true" signature="1271:1375" ph="/* finds Visible points (Clint) ... */" />
-            <marker date="1480996855050" expanded="true" signature="1461:2168" ph="{...}" />
-            <marker date="1480996855050" expanded="true" signature="2175:2336" ph="/* Returns true if the lines intersect, otherwise false. In addition, if the lines ... */" />
-            <marker date="1480996855050" expanded="true" signature="2438:2989" ph="{...}" />
-            <marker date="1480996855050" expanded="true" signature="2803:2930" ph="/* if (i_x != null) ... */" />
-            <marker date="1480996855050" expanded="true" signature="3142:7372" ph="{...}" />
-            <marker date="1480996855050" expanded="true" signature="7487:8024" ph="{...}" />
-            <marker date="1480996855050" expanded="true" signature="8125:8666" ph="{...}" />
-            <marker date="1480996855050" expanded="true" signature="8681:9457" ph="{...}" />
-            <marker date="1480996855050" expanded="true" signature="8681:9459" ph="{...}" />
-            <marker date="1480996855050" expanded="true" signature="8707:9451" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="6:228" ph="..." />
+            <marker date="1481008203490" expanded="true" signature="243:9647" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="269:9645" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="380:1085" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="1194:1342" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="1352:1459" ph="/* finds Visible points (Clint) ... */" />
+            <marker date="1481008203490" expanded="true" signature="1559:3355" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="3409:3779" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="3787:3954" ph="/* Returns true if the lines intersect, otherwise false. In addition, if the lines ... */" />
+            <marker date="1481008203490" expanded="true" signature="4053:4475" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="4640:8854" ph="{...}" />
+            <marker date="1481008203490" expanded="true" signature="8895:9639" ph="{...}" />
           </folding>
         </state>
       </provider>
