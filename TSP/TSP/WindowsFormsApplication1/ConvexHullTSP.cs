@@ -87,10 +87,10 @@ namespace TSP
                 
                 double min = double.MaxValue;
                 foreach(int lv in local_visible) {
-                    double next = citiesOuter[i_outer].costToGetTo(citiesInner[lv]);
-                    if(next < min)
+                    double next_v = citiesOuter[i_outer].costToGetTo(citiesInner[lv]);
+                    if(next_v < min)
                     {
-                        min = next;
+                        min = next_v;
                         i_inner = lv;
                     }
                 }
@@ -101,115 +101,99 @@ namespace TSP
                 }
             }
 
-            bool on_outer = true;
+            CombineState top = new CombineState(citiesOuter, citiesInner, visible, i_inner, i_outer, true, 0);
+            CombineState last = null;
+            const int lookahead = 10;
+            // find the best connection locally with 'lookahead' look aheads.
 
-            while(true)
+            List<CombineState> bottom = new List<CombineState>();
+            bottom.Add(top);
+
+            //fill binary tree with possible paths
+            List<CombineState> next = new List<CombineState>();
+            for (int d = 0; d < lookahead; d++)
             {
-                const int lookahead = 1;
-                // find the best connection locally with lookahead + 1 look aheads.
-                // the final '+ 1' local ahead always assumes connection between the hulls
-                CombineState initial = new CombineState(citiesOuter, citiesInner, visible,i_inner, i_outer, on_outer, 0);
-
-                double across = goAcross(initial, lookahead);
-                double around = goAround(initial, lookahead);
-                if(across < around)
+                foreach (CombineState state in bottom)
                 {
-                    // go across
-                    if(on_outer)
+                    if (state == null)
                     {
-                        combineHull[i_combine++] = citiesInner[++i_inner];
+                        next.Add(null);
+                        next.Add(null);
                     }
                     else
                     {
-                        combineHull[i_combine++] = citiesOuter[++i_outer];
-                    }
-                    on_outer = !on_outer;
-                }
-                else
-                {
-                    // go around
-                    if (!on_outer)
-                    {
-                        combineHull[i_combine++] = citiesInner[++i_inner];
-                    }
-                    else
-                    {
-                        combineHull[i_combine++] = citiesOuter[++i_outer];
+                        next.Add(state.Across);
+                        next.Add(state.Around);
                     }
                 }
+                bottom = next;
+                next = new List<CombineState>();
             }
-            
+
+            while (i_combine < combineHull.Length)
+            {
+                int min_index = -1;
+                for (int i = 0; i < bottom.Count; i++)
+                {
+                    if (bottom[i] == null)
+                    {
+                        continue;
+                    }
+                    if(bottom[i].end == true)
+                    {
+                        last = bottom[i];
+                        break;
+                    }
+                    if (bottom[i].length < bottom[min_index].length)
+                    {
+                        min_index = i;
+                    }
+                }
+                if (min_index < bottom.Count)
+                {
+                    //across
+                    top = top.Across;
+                    bottom = bottom.Take(bottom.Count / 2).ToList();
+                } else
+                {
+                    // around
+                    top = top.Around;
+                    bottom = bottom.Skip(bottom.Count / 2).Take(bottom.Count / 2).ToList();
+                }
+                combineHull[i_combine++] = top._City;
+
+                List<CombineState> inc = new List<CombineState>();
+                foreach (CombineState state in bottom)
+                {
+                    if (state == null)
+                    {
+                        inc.Add(null);
+                        inc.Add(null);
+                    }
+                    else
+                    {
+                        inc.Add(state.Across);
+                        inc.Add(state.Around);
+                    }
+                }
+                bottom = inc;
+            }
+
+            List<CombineState> finalRoute = new List<CombineState>();
+            while(last != top)
+            {
+                finalRoute.Add(last);
+                last = last.parent;
+            }
+            for(int i = finalRoute.Count - 1; i >= 0; i++)
+            {
+                combineHull[i_combine++] = finalRoute[i]._City;
+            }
+
             return combineHull;
         }
 
-        double goAcross(CombineState state, int depth)
-        {
-            //FIXME think about when the loop is almost done
-            //FIXME think about if it is not visible
-            if (state.on_outer)
-            {
-                int[] local_visible = FindVisibleFromOuter(state.citiesOuter[state.i_outer], state.citiesInner, state.visible);
-                if (local_visible.Contains(state.i_inner))
-                {
-                    state.length += state.citiesOuter[state.i_outer].costToGetTo(state.citiesInner[state.i_inner]);
-                    state.on_outer = false;
-                    
-                }
-            }
-            else
-            {
-                int[] local_visible = FindVisibleFromOuter(state.citiesInner[state.i_inner], state.citiesOuter, state.visible);
-                if (local_visible.Contains(state.i_outer))
-                {
-                    state.length += state.citiesInner[state.i_inner].costToGetTo(state.citiesOuter[state.i_outer]);
-                    state.on_outer = true;
-                }
-            }
-            if (depth < 0)
-            {
-                return state.length;
-            } else if (depth < 1)
-            {
-                return goAcross(new CombineState(state), depth - 1);
-            }
-            else
-            {
-                return Math.Min(
-                    goAcross(new CombineState(state), depth - 1),
-                    goAround(new CombineState(state), depth - 1));
-            }
-        }
-
-        double goAround(CombineState state, int depth)
-        {
-            //FIXME think about when the loop is almost done
-            if (state.on_outer)
-            {
-                state.length += state.citiesOuter[state.i_outer].costToGetTo(state.citiesOuter[ModInc(state.i_outer, state.citiesOuter.Length)]);
-            }
-            else
-            {
-                state.length += state.citiesInner[state.i_inner].costToGetTo(state.citiesInner[ModInc(state.i_inner, state.citiesInner.Length)]);
-            }
-
-            if (depth < 1)
-            {
-                return goAcross(new CombineState(state), depth - 1);
-            }
-            else
-            {
-                return Math.Min(
-                    goAcross(new CombineState(state), depth - 1),
-                    goAround(new CombineState(state), depth - 1));
-            }
-        }
-
-        int ModInc(int i, int n)
-        {
-            return (i + 1) % n;
-        }
-
-        int[] FindVisibleFromOuter(City cityOuter, City[] citiesInner, Tuple<City, City>[] visible)
+        public static int[] FindVisibleFromOuter(City cityOuter, City[] citiesInner, Tuple<City, City>[] visible)
         {
             List<int> result = new List<int>();
             for(int i = 0; i < visible.Length; i++)
