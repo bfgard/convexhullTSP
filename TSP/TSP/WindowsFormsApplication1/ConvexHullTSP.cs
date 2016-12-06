@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using _2_convex_hull;
 
 namespace TSP
 {
@@ -12,8 +13,22 @@ namespace TSP
         // find a convex hull give an array of cities (Ben)
         City[] FindConvexHull(City[] cities)
         {
-            // FIXME implement
-            return null;
+            ConvexHullSolver solver = new ConvexHullSolver();   
+            List<System.Drawing.PointF> pointList = new List<System.Drawing.PointF>();
+            for (int i = 0; i < cities.Length; i++)
+            {
+                City c = cities[i];
+                System.Drawing.PointF pointCity = new System.Drawing.PointF((float)c.X, (float)c.Y);
+                pointList.Add(pointCity);
+            }
+
+            int[] hull = solver.Solve(pointList);
+            City[] cityHull = new City[hull.Length];
+            for (int i = 0; i < hull.Length; i++)
+            {
+                cityHull[i] = cities[hull[i]];
+            }
+            return cityHull;
         }
 
         // set subtractions citiesA - citiesB
@@ -231,7 +246,7 @@ namespace TSP
             return result.ToArray();
         }
 
-        City[] run(City[] cities)
+       public City[] run(City[] cities)
         {
             List<City[]> hulls = new List<City[]>();
 
