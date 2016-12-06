@@ -20,26 +20,50 @@
     <favorites_list name="TSP" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="ConvexHullTSP.cs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../../WindowsFormsApplication1/ConvexHullTSP.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="26" column="75" selection-start-line="26" selection-start-column="75" selection-end-line="27" selection-end-column="85" />
+            <state relative-caret-position="340">
+              <caret line="71" column="41" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
               <folding>
-                <marker date="1480977046019" expanded="true" signature="6:141" ph="..." />
-                <marker date="1480977046019" expanded="true" signature="156:3273" ph="{...}" />
-                <marker date="1480977046019" expanded="true" signature="182:3271" ph="{...}" />
-                <marker date="1480977046019" expanded="true" signature="293:369" ph="{...}" />
-                <marker date="1480977046019" expanded="true" signature="478:626" ph="{...}" />
-                <marker date="1480977046019" expanded="true" signature="636:740" ph="/* finds Visible points (Clint) ... */" />
-                <marker date="1480977046019" expanded="true" signature="826:1436" ph="{...}" />
-                <marker date="1480977046019" expanded="true" signature="1443:1604" ph="/* Returns true if the lines intersect, otherwise false. In addition, if the lines ... */" />
-                <marker date="1480977046019" expanded="true" signature="1706:2257" ph="{...}" />
-                <marker date="1480977046019" expanded="true" signature="2071:2198" ph="/* if (i_x != null) ... */" />
-                <marker date="1480977046019" expanded="true" signature="2410:2486" ph="{...}" />
-                <marker date="1480977046019" expanded="true" signature="2521:3265" ph="{...}" />
+                <marker date="1480995031843" expanded="true" signature="6:141" ph="..." />
+                <marker date="1480995031843" expanded="true" signature="6:163" ph="..." />
+                <marker date="1480995031843" expanded="true" signature="178:9391" ph="{...}" />
+                <marker date="1480995031843" expanded="true" signature="315:1004" ph="{...}" />
+                <marker date="1480995031843" expanded="true" signature="1113:1261" ph="{...}" />
+                <marker date="1480995031843" expanded="true" signature="1271:1375" ph="/* finds Visible points (Clint) ... */" />
+                <marker date="1480995031843" expanded="true" signature="1461:2100" ph="{...}" />
+                <marker date="1480995031843" expanded="true" signature="2107:2268" ph="/* Returns true if the lines intersect, otherwise false. In addition, if the lines ... */" />
+                <marker date="1480995031843" expanded="true" signature="2370:2921" ph="{...}" />
+                <marker date="1480995031843" expanded="true" signature="2735:2862" ph="/* if (i_x != null) ... */" />
+                <marker date="1480995031843" expanded="true" signature="3074:7304" ph="{...}" />
+                <marker date="1480995031843" expanded="true" signature="7419:7956" ph="{...}" />
+                <marker date="1480995031843" expanded="true" signature="8057:8598" ph="{...}" />
+                <marker date="1480995031843" expanded="true" signature="8613:9389" ph="{...}" />
+                <marker date="1480995031843" expanded="true" signature="8613:9391" ph="{...}" />
+                <marker date="1480995031843" expanded="true" signature="8639:9383" ph="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Microsoft.Common.CurrentVersion.targets" pinned="false" current-in-tab="false">
+        <entry file="file://C:/Program Files (x86)/MSBuild/14.0/Bin/Microsoft.Common.CurrentVersion.targets">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="4435" column="9" selection-start-line="4435" selection-start-column="8" selection-end-line="4435" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TSP.csproj" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../WindowsFormsApplication1/TSP.csproj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -50,6 +74,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/../../WindowsFormsApplication1/ConvexHullTSP.cs" />
+        <option value="$PROJECT_DIR$/../../../../convex hull/convex-hull/ConvexHullSolver.cs" />
+        <option value="$PROJECT_DIR$/../../WindowsFormsApplication1/TSP.csproj" />
       </list>
     </option>
   </component>
@@ -106,6 +132,11 @@
       </pane>
     </panes>
   </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../WindowsFormsApplication1/CombineState.cs" />
+    <property name="settings.editor.selected.configurable" value="preferences.toolset" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+  </component>
   <component name="RunManager" selected=".NET Project.Default">
     <configuration default="true" type="DotNetProject" factoryName=".NET Project">
       <option name="PROJECT_PATH" value="" />
@@ -120,12 +151,12 @@
       <method />
     </configuration>
     <configuration default="false" name="Default" type="DotNetProject" factoryName=".NET Project">
-      <option name="PROJECT_PATH" value="" />
-      <option name="PROJECT_KIND" value="None" />
-      <option name="PROJECT_TFM" value="" />
-      <option name="EXE_PATH" value="" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/../../WindowsFormsApplication1/TSP.csproj" />
+      <option name="PROJECT_KIND" value="Console" />
+      <option name="PROJECT_TFM" value="Default" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../WindowsFormsApplication1/bin/Debug/WindowsFormsApplication1.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../WindowsFormsApplication1/bin/Debug" />
       <option name="USE_MONO" value="0" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <envs />
@@ -149,11 +180,12 @@
       <option name="presentableId" value="Default" />
       <updated>1480974245576</updated>
       <workItem from="1480974247969" duration="2800000" />
+      <workItem from="1480994824368" duration="1249000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2800000" />
+    <option name="totallyTimeSpent" value="4049000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -166,29 +198,29 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Change Signature" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2496" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Errors in solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="UnitTesting" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Errors in solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UnitTesting" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="NuGet" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Change Signature" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14293334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="NuGet" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -201,31 +233,116 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/../../WindowsFormsApplication1/ConvexHullTSP.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1480995031843" expanded="true" signature="6:141" ph="..." />
+            <marker date="1480995031843" expanded="true" signature="6:163" ph="..." />
+            <marker date="1480995031843" expanded="true" signature="178:9391" ph="{...}" />
+            <marker date="1480995031843" expanded="true" signature="315:1004" ph="{...}" />
+            <marker date="1480995031843" expanded="true" signature="1113:1261" ph="{...}" />
+            <marker date="1480995031843" expanded="true" signature="1271:1375" ph="/* finds Visible points (Clint) ... */" />
+            <marker date="1480995031843" expanded="true" signature="1461:2100" ph="{...}" />
+            <marker date="1480995031843" expanded="true" signature="2107:2268" ph="/* Returns true if the lines intersect, otherwise false. In addition, if the lines ... */" />
+            <marker date="1480995031843" expanded="true" signature="2370:2921" ph="{...}" />
+            <marker date="1480995031843" expanded="true" signature="2735:2862" ph="/* if (i_x != null) ... */" />
+            <marker date="1480995031843" expanded="true" signature="3074:7304" ph="{...}" />
+            <marker date="1480995031843" expanded="true" signature="7419:7956" ph="{...}" />
+            <marker date="1480995031843" expanded="true" signature="8057:8598" ph="{...}" />
+            <marker date="1480995031843" expanded="true" signature="8613:9389" ph="{...}" />
+            <marker date="1480995031843" expanded="true" signature="8613:9391" ph="{...}" />
+            <marker date="1480995031843" expanded="true" signature="8639:9383" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/JetBrains/Shared/v07/DecompilerCache/decompiler/C5EA14A2-BDD5-42D4-9796-00639BD6AD8B/f1/554f3260/Single.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="25" column="48" selection-start-line="25" selection-start-column="48" selection-end-line="25" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../../convex hull/convex-hull/ConvexHullSolver.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="9" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+          <folding>
+            <marker date="1480995453734" expanded="true" signature="6:110" ph="..." />
+            <marker date="1480995453734" expanded="true" signature="136:2220" ph="{...}" />
+            <marker date="1480995453734" expanded="true" signature="169:2218" ph="{...}" />
+            <marker date="1480995453734" expanded="true" signature="374:468" ph="{...}" />
+            <marker date="1480995453734" expanded="true" signature="499:662" ph="{...}" />
+            <marker date="1480995453734" expanded="true" signature="707:908" ph="{...}" />
+            <marker date="1480995453734" expanded="true" signature="997:1938" ph="{...}" />
+            <marker date="1480995453734" expanded="true" signature="1972:2212" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../WindowsFormsApplication1/App.config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../WindowsFormsApplication1/Properties/Settings.settings">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../WindowsFormsApplication1/Properties/Resources.resx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-845">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Program Files (x86)/MSBuild/14.0/Bin/Microsoft.Common.CurrentVersion.targets">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="4435" column="9" selection-start-line="4435" selection-start-column="8" selection-end-line="4435" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../WindowsFormsApplication1/TSP.csproj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../WindowsFormsApplication1/ConvexHullTSP.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="26" column="75" selection-start-line="26" selection-start-column="75" selection-end-line="27" selection-end-column="85" />
+        <state relative-caret-position="340">
+          <caret line="71" column="41" selection-start-line="71" selection-start-column="41" selection-end-line="71" selection-end-column="41" />
           <folding>
-            <marker date="1480977046019" expanded="true" signature="6:141" ph="..." />
-            <marker date="1480977046019" expanded="true" signature="156:3273" ph="{...}" />
-            <marker date="1480977046019" expanded="true" signature="182:3271" ph="{...}" />
-            <marker date="1480977046019" expanded="true" signature="293:369" ph="{...}" />
-            <marker date="1480977046019" expanded="true" signature="478:626" ph="{...}" />
-            <marker date="1480977046019" expanded="true" signature="636:740" ph="/* finds Visible points (Clint) ... */" />
-            <marker date="1480977046019" expanded="true" signature="826:1436" ph="{...}" />
-            <marker date="1480977046019" expanded="true" signature="1443:1604" ph="/* Returns true if the lines intersect, otherwise false. In addition, if the lines ... */" />
-            <marker date="1480977046019" expanded="true" signature="1706:2257" ph="{...}" />
-            <marker date="1480977046019" expanded="true" signature="2071:2198" ph="/* if (i_x != null) ... */" />
-            <marker date="1480977046019" expanded="true" signature="2410:2486" ph="{...}" />
-            <marker date="1480977046019" expanded="true" signature="2521:3265" ph="{...}" />
+            <marker date="1480995031843" expanded="true" signature="6:141" ph="..." />
+            <marker date="1480995031843" expanded="true" signature="6:163" ph="..." />
+            <marker date="1480995031843" expanded="true" signature="178:9391" ph="{...}" />
+            <marker date="1480995031843" expanded="true" signature="315:1004" ph="{...}" />
+            <marker date="1480995031843" expanded="true" signature="1113:1261" ph="{...}" />
+            <marker date="1480995031843" expanded="true" signature="1271:1375" ph="/* finds Visible points (Clint) ... */" />
+            <marker date="1480995031843" expanded="true" signature="1461:2100" ph="{...}" />
+            <marker date="1480995031843" expanded="true" signature="2107:2268" ph="/* Returns true if the lines intersect, otherwise false. In addition, if the lines ... */" />
+            <marker date="1480995031843" expanded="true" signature="2370:2921" ph="{...}" />
+            <marker date="1480995031843" expanded="true" signature="2735:2862" ph="/* if (i_x != null) ... */" />
+            <marker date="1480995031843" expanded="true" signature="3074:7304" ph="{...}" />
+            <marker date="1480995031843" expanded="true" signature="7419:7956" ph="{...}" />
+            <marker date="1480995031843" expanded="true" signature="8057:8598" ph="{...}" />
+            <marker date="1480995031843" expanded="true" signature="8613:9389" ph="{...}" />
+            <marker date="1480995031843" expanded="true" signature="8613:9391" ph="{...}" />
+            <marker date="1480995031843" expanded="true" signature="8639:9383" ph="{...}" />
           </folding>
         </state>
       </provider>

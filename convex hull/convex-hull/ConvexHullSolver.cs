@@ -6,7 +6,7 @@ using _1_convex_hull;
 
 namespace _2_convex_hull
 {
-    class ConvexHullSolver
+	public class ConvexHullSolver
     {
         System.Drawing.Graphics g;
         System.Windows.Forms.PictureBox pictureBoxView;
