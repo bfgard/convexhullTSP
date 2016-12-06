@@ -36,7 +36,7 @@ namespace TSP
             this.length = state.length + addedLength;
         }
 
-        public CombineState(City[] citiesOuter, City[] citiesInner, Tuple<City, City>[] visible, int i_inner, int i_outer, bool on_outer, double length)
+        public CombineState(City[] citiesOuter, City[] citiesInner, Tuple<List<int>[], List<int>[]> visible, int i_inner, int i_outer, bool on_outer, double length)
         {
             this.movedOuter = i_outer != 0;
             this.movedInner = false;
@@ -56,7 +56,7 @@ namespace TSP
 
         public City[] citiesOuter;
         public City[] citiesInner;
-        public Tuple<City, City>[] visible;
+        public Tuple<List<int>[], List<int>[]> visible;
 
         public int i_inner, i_inner_start;
         public int i_outer, i_outer_start;
@@ -117,7 +117,7 @@ namespace TSP
                 {
                     return null;
                 }
-                int[] local_visible = ConvexHullTSP.FindVisibleFromOuter(citiesOuter[i_outer], citiesInner, visible);
+                int[] local_visible = visible.Item1[i_outer].ToArray();
                 if (local_visible.Contains(i_inner))
                 {
                     return new CombineState(this, citiesOuter[i_outer].costToGetTo(citiesInner[i_inner]), true);
@@ -131,9 +131,10 @@ namespace TSP
                     {
                         CombineState final = new CombineState(this, citiesInner[i_inner].costToGetTo(citiesOuter[i_outer]), true);
                         final.end = true;
+                        return final;
                     }
                 }
-                int[] local_visible = ConvexHullTSP.FindVisibleFromOuter(citiesInner[i_inner], citiesOuter, visible);
+                int[] local_visible = visible.Item2[i_inner].ToArray();
                 if (local_visible.Contains(i_outer))
                 {
                     return new CombineState(this, citiesInner[i_inner].costToGetTo(citiesOuter[i_outer]), true);

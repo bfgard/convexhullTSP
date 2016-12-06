@@ -37,35 +37,50 @@ namespace TSP
             // FIXME implement something better than n^2
             return citiesA.Where(x => !citiesB.Contains(x)).ToArray();
         }
-
+        
         // finds Visible points (Clint)
-	    // Returns an array of tuples from the outer hull to the inner hull
-        Tuple<City, City>[] FindVisiblePoints(City[] citiesOuter, City[] citiesInner)
+        // Returns an array of tuples from the outer hull to the inner hull
+        Tuple< List<int>[], List<int>[] > FindVisiblePoints(City[] citiesOuter, City[] citiesInner)
         {
-	        var visible = new List<Tuple<City, City>>();
-	        foreach (var city in citiesOuter)
-	        {
-		        foreach (var city1 in citiesInner)
-		        {
-			        var intersects = 0;
-			        for (var i = 0; i < citiesInner.Length; i++)
-			        {
-				        var begin = i > 0 ? i - 1 : citiesInner.Length - 1;
-				        intersects += test_line_intersection(city, city1, citiesInner[begin], citiesInner[i]) ? 1 : 0;
+            List<int>[] outToIn = new List<int>[citiesOuter.Length];
+            List<int>[] inToOut = new List<int>[citiesInner.Length];
 
-			        }
-			        if (intersects <= 2) // If we never intersected (more than the connected pieces)
-			        {
-				        visible.Add(new Tuple<City, City>(city, city1));
-			        }
-		        }
-	        }
-	        return visible.ToArray();
+            for(int outer = 0; outer < citiesOuter.Length; outer++)
+            {
+                outToIn[outer] = new List<int>();
+            }
+            for(int inner = 0; inner < citiesInner.Length; inner++)
+            {
+                inToOut[inner] = new List<int>();
+            }
+
+            for (int outer = 0; outer < citiesOuter.Length; outer++)
+            {
+                City city = citiesOuter[outer];
+
+                for (int inner = 0; inner < citiesInner.Length; inner++)
+                {
+                    City city1 = citiesInner[inner];
+                    int intersects = 0;
+                    for (var i = 0; i < citiesInner.Length; i++)
+                    {
+                        var begin = i > 0 ? i - 1 : citiesInner.Length - 1;
+                        intersects += test_line_intersection(city, city1, citiesInner[begin], citiesInner[i]) ? 1 : 0;
+
+                    }
+                    if (intersects <= 2) // If we never intersected (more than the connected pieces)
+                    {
+                        outToIn[outer].Add(inner);
+                        inToOut[inner].Add(outer);
+                    }
+                }
+            }
+            return new Tuple<List<int>[], List<int>[]>(outToIn, inToOut);
         }
 
-	    // Returns true if the lines intersect, otherwise false. In addition, if the lines
-		// intersect the intersection point may be stored in the floats i_x and i_y.
-	    private static bool test_line_intersection(City city0, City city1,
+        // Returns true if the lines intersect, otherwise false. In addition, if the lines
+        // intersect the intersection point may be stored in the floats i_x and i_y.
+        private static bool test_line_intersection(City city0, City city1,
 		    City city2, City city3)
 	    {
 		    var s1_x = city1.X - city0.X;
@@ -77,16 +92,11 @@ namespace TSP
 		    var s = (-s1_y * (city0.X - city2.X) + s1_x * (city0.Y - city2.Y)) / (-s2_x * s1_y + s1_x * s2_y);
 		    var t = ( s2_x * (city0.Y - city2.Y) - s2_y * (city0.X - city2.X)) / (-s2_x * s1_y + s1_x * s2_y);
 
-//			    if (i_x != null)
-//				    i_x = city0.X + (t * s1_x);
-//			    if (i_y != null)
-//				    i_y = city0.Y + (t * s1_y);
-
 		    return s >= 0 && s <= 1 && t >= 0 && t <= 1;
 	    }
 
 	    // returns minimum combination of two hulls (Roy)
-        City[] CombineHulls(City[] citiesOuter, City[] citiesInner, Tuple<City, City>[] visible)
+        City[] CombineHulls(City[] citiesOuter, City[] citiesInner, Tuple<List<int>[], List<int>[]> visible)
         {
             City[] combineHull = new City[citiesOuter.Length + citiesInner.Length];
 
@@ -100,7 +110,7 @@ namespace TSP
             while(i_inner == -1)
             {
                 // find the closest visible point from citiesOuter[0]
-                int[] local_visible = FindVisibleFromOuter(citiesOuter[i_outer], citiesInner, visible);
+                int[] local_visible = visible.Item1[0].ToArray();
                 
                 double min = double.MaxValue;
                 foreach(int lv in local_visible) {
@@ -120,7 +130,7 @@ namespace TSP
 
             CombineState top = new CombineState(citiesOuter, citiesInner, visible, i_inner, i_outer, true, 0);
             CombineState last = null;
-            const int lookahead = 10;
+            const int lookahead = 3;
             // find the best connection locally with 'lookahead' look aheads.
 
             List<CombineState> bottom = new List<CombineState>();
@@ -161,12 +171,12 @@ namespace TSP
                         last = bottom[i];
                         break;
                     }
-                    if (bottom[i].length < bottom[min_index].length)
+                    if (min_index == -1 || bottom[i].length < bottom[min_index].length)
                     {
                         min_index = i;
                     }
                 }
-                if (min_index < bottom.Count)
+                if (min_index < bottom.Count / 2)
                 {
                     //across
                     top = top.Across;
@@ -208,44 +218,6 @@ namespace TSP
             }
 
             return combineHull;
-        }
-
-        public static int[] FindVisibleFromOuter(City cityOuter, City[] citiesInner, Tuple<City, City>[] visible)
-        {
-            List<int> result = new List<int>();
-            for(int i = 0; i < visible.Length; i++)
-            {
-                if(visible[i].Item1 == cityOuter)
-                {
-                    for(int j = 0; j < citiesInner.Length; j++)
-                    {
-                        if(visible[i].Item2 == citiesInner[j])
-                        {
-                            result.Add(j);
-                        }
-                    }
-                }
-            }
-            return result.ToArray();
-        }
-
-        int[] FindVisibleFromInner(City cityInner, City[] citiesOuter, Tuple<City, City>[] visible)
-        {
-            List<int> result = new List<int>();
-            for (int i = 0; i < visible.Length; i++)
-            {
-                if (visible[i].Item2 == cityInner)
-                {
-                    for (int j = 0; j < citiesOuter.Length; j++)
-                    {
-                        if (visible[i].Item1 == citiesOuter[j])
-                        {
-                            result.Add(j);
-                        }
-                    }
-                }
-            }
-            return result.ToArray();
         }
 
        public City[] run(City[] cities)
