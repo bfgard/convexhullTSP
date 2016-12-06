@@ -162,7 +162,7 @@ namespace TSP
 
             CombineState top = new CombineState(citiesOuter, citiesInner, visible, i_inner, i_outer, true, 0);
             CombineState last = null;
-            const int lookahead = 10;
+            const int lookahead = 20;
             // find the best connection locally with 'lookahead' look aheads.
 
             List<CombineState> bottom = new List<CombineState>();
@@ -206,7 +206,7 @@ namespace TSP
                 }
             }
 
-            while (last == null)
+            while (last == null  && i_combine < combineHull.Length)
             {
                 int min_index = -1;
                 for (int i = 0; i < bottom.Count; i++)
@@ -228,6 +228,10 @@ namespace TSP
                 if(last != null)
                 {
                     break;
+                }
+                if(min_index == -1)
+                {
+                    return null; //no valid paths
                 }
                 if (min_index < bottom.Count / 2)
                 {
@@ -258,7 +262,8 @@ namespace TSP
                 }
                 bottom = inc;
             }
-
+            if (last == null)
+                return null; // error
             List<CombineState> finalRoute = new List<CombineState>();
             last = last.parent;
             while(last != top)
