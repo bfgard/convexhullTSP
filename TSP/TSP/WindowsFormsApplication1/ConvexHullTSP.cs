@@ -12,6 +12,11 @@ namespace TSP
 {
     class ConvexHullTSP
     {
+        public ConvexHullTSP()
+        {
+
+        }
+
         // find a convex hull give an array of cities (Ben)
         City[] FindConvexHull(City[] cities)
         {
@@ -157,7 +162,7 @@ namespace TSP
 
             CombineState top = new CombineState(citiesOuter, citiesInner, visible, i_inner, i_outer, true, 0);
             CombineState last = null;
-            const int lookahead = 3;
+            const int lookahead = 10;
             // find the best connection locally with 'lookahead' look aheads.
 
             List<CombineState> bottom = new List<CombineState>();
@@ -182,9 +187,26 @@ namespace TSP
                 }
                 bottom = next;
                 next = new List<CombineState>();
+
+                for(int i = 0; i < bottom.Count; i++)
+                {
+                    if (bottom[i] == null)
+                    {
+                        continue;
+                    }
+                    if (bottom[i].end == true)
+                    {
+                        if (last == null || last.length > bottom[i].length)
+                            last = bottom[i];
+                    }
+                }
+                if(last != null)
+                {
+                    break;
+                }
             }
 
-            while (i_combine < combineHull.Length)
+            while (last == null)
             {
                 int min_index = -1;
                 for (int i = 0; i < bottom.Count; i++)
@@ -195,13 +217,17 @@ namespace TSP
                     }
                     if(bottom[i].end == true)
                     {
-                        last = bottom[i];
-                        break;
+                        if(last == null || last.length > bottom[i].length)
+                            last = bottom[i];
                     }
                     if (min_index == -1 || bottom[i].length < bottom[min_index].length)
                     {
                         min_index = i;
                     }
+                }
+                if(last != null)
+                {
+                    break;
                 }
                 if (min_index < bottom.Count / 2)
                 {
@@ -234,12 +260,13 @@ namespace TSP
             }
 
             List<CombineState> finalRoute = new List<CombineState>();
+            last = last.parent;
             while(last != top)
             {
                 finalRoute.Add(last);
                 last = last.parent;
             }
-            for(int i = finalRoute.Count - 1; i >= 0; i++)
+            for(int i = finalRoute.Count - 1; i >= 0; i--)
             {
                 combineHull[i_combine++] = finalRoute[i]._City;
             }

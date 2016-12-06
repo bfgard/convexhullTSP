@@ -20,18 +20,26 @@ namespace TSP
             this.i_outer = state.i_outer;
             this.i_outer_start = state.i_outer_start;
             this.on_outer = state.on_outer;
+            this.movedInner = state.movedInner;
+            this.movedOuter = state.movedOuter;
+            
             if(on_outer)
             {
-                ModInc(this.i_outer, citiesOuter.Length);
+                this.i_outer = ModInc(this.i_outer, citiesOuter.Length);
                 this.movedOuter = true;
             } else
             {
-                ModInc(this.i_inner, this.citiesInner.Length);
+                this.i_inner = ModInc(this.i_inner, this.citiesInner.Length);
                 this.movedInner = true;
             }
             if(go_across)
             {
                 this.on_outer = !this.on_outer;
+            }
+            if (this.movedInner && this.i_inner == this.i_inner_start &&
+                this.movedOuter && this.i_outer == this.i_outer_start)
+            {
+                this.end = true;
             }
             this.length = state.length + addedLength;
         }
@@ -125,15 +133,19 @@ namespace TSP
             }
             else
             {
-                if (movedOuter && i_outer == i_outer_start)
+                if(citiesInner.Length == 1)
                 {
-                    if (i_inner == i_inner_start)
+                    return null;
+                }
+                /*if (movedOuter && i_outer == i_outer_start)
+                {
+                    if (i_inner == ModDec(i_inner_start, citiesInner.Length))
                     {
                         CombineState final = new CombineState(this, citiesInner[i_inner].costToGetTo(citiesOuter[i_outer]), true);
                         final.end = true;
                         return final;
                     }
-                }
+                }*/
                 int[] local_visible = visible.Item2[i_inner].ToArray();
                 if (local_visible.Contains(i_outer))
                 {
@@ -147,7 +159,7 @@ namespace TSP
         {
             if (on_outer)
             {
-                if (movedOuter && i_outer == i_outer_start)
+                /*if (movedOuter && i_outer == ModDec(i_outer_start,citiesOuter.Length))
                 {
                     if (i_inner == i_inner_start)
                     {
@@ -155,12 +167,12 @@ namespace TSP
                         final.end = false;
                         return final;
                     }
-                }
+                }*/
                 return new CombineState(this, citiesOuter[i_outer].costToGetTo(citiesOuter[ModInc(i_outer, citiesOuter.Length)]), false);
             }
             else
             {
-                if (movedInner && i_inner == i_inner_start)
+                if (movedInner && i_inner == ModDec(i_inner_start,citiesInner.Length))
                 {
                     return null;
                 }
@@ -171,6 +183,14 @@ namespace TSP
         int ModInc(int i, int n)
         {
             return (i + 1) % n;
+        }
+
+        int ModDec(int i, int n)
+        {
+            if (i == 0)
+                return n - 1;
+            else
+                return i - 1;
         }
     }
 }
