@@ -11,18 +11,23 @@ namespace TSP
     /// </summary>
     class City
     {
-        //public override bool Equals(object obj)
-        //{
-        //    if (!(obj is City))
-        //    {
-        //        return false;
-        //    }
-        //    City city = obj as City;
+        public override bool Equals(object obj)
+        {
+            if (!(obj is City))
+            {
+                return false;
+            }
+            City city = obj as City;
 
-        //    return  _X == city._X &&
-        //            _Y == city._Y &&
-        //            _elevation == city._elevation;
-        //}
+            bool returnV = _X == city._X &&
+                    _Y == city._Y &&
+                    _elevation == city._elevation;
+
+            if (returnV)
+                returnV = true;
+
+            return returnV;
+        }
 
         public City(double x, double y)
         {

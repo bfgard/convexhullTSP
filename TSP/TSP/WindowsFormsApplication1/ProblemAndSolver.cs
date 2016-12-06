@@ -514,7 +514,7 @@ namespace TSP
             timer.Start();
             // TODO: Add your implementation for your advanced solver here.
 
-            City[] route = new ConvexHullTSP.run(Cities);
+            City[] route = new ConvexHullTSP().run(Cities);
 
             timer.Stop();
 
