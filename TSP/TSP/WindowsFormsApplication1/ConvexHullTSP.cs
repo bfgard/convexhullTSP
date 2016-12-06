@@ -47,14 +47,14 @@ namespace TSP
 	        {
 		        foreach (var city1 in citiesInner)
 		        {
-			        var intersects = true;
+			        var intersects = 0;
 			        for (var i = 0; i < citiesInner.Length; i++)
 			        {
 				        var begin = i > 0 ? i - 1 : citiesInner.Length - 1;
-				        intersects &= !test_line_intersection(city, city1, citiesInner[begin], citiesInner[i]);
+				        intersects += test_line_intersection(city, city1, citiesInner[begin], citiesInner[i]) ? 1 : 0;
 
 			        }
-			        if (!intersects)
+			        if (intersects <= 2) // If we never intersected (more than the connected pieces)
 			        {
 				        visible.Add(new Tuple<City, City>(city, city1));
 			        }
